@@ -20,42 +20,152 @@ const languages = [
 
 const courses = {
   javascript: [
-    { id: 1, title: 'Переменные и типы данных', difficulty: 'Легко', completed: false },
-    { id: 2, title: 'Функции и области видимости', difficulty: 'Средне', completed: false },
-    { id: 3, title: 'Асинхронность и промисы', difficulty: 'Сложно', completed: false }
+    { id: 1, title: 'Первая программа Hello World', difficulty: 'Легко', completed: false },
+    { id: 2, title: 'Калькулятор на JavaScript', difficulty: 'Средне', completed: false },
+    { id: 3, title: 'Игра Кликер', difficulty: 'Средне', completed: false },
+    { id: 4, title: 'Генератор случайных чисел', difficulty: 'Сложно', completed: false }
   ],
   python: [
-    { id: 1, title: 'Основы синтаксиса Python', difficulty: 'Легко', completed: false },
-    { id: 2, title: 'Списки и словари', difficulty: 'Средне', completed: false },
-    { id: 3, title: 'ООП в Python', difficulty: 'Сложно', completed: false }
+    { id: 1, title: 'Приветствие пользователя', difficulty: 'Легко', completed: false },
+    { id: 2, title: 'Калькулятор на Python', difficulty: 'Средне', completed: false },
+    { id: 3, title: 'Игра "Угадай число"', difficulty: 'Средне', completed: false },
+    { id: 4, title: 'Список задач (ToDo)', difficulty: 'Сложно', completed: false }
   ],
   csharp: [
-    { id: 1, title: 'Основы Unity: GameObject и Component', difficulty: 'Легко', completed: false },
-    { id: 2, title: 'Создание простой 2D игры', difficulty: 'Средне', completed: false },
-    { id: 3, title: 'Физика и коллизии в Unity', difficulty: 'Сложно', completed: false }
+    { id: 1, title: 'Создание GameObject в Unity', difficulty: 'Легко', completed: false },
+    { id: 2, title: 'Движение персонажа', difficulty: 'Средне', completed: false },
+    { id: 3, title: 'Игра Кликер в Unity', difficulty: 'Средне', completed: false },
+    { id: 4, title: 'Система здоровья игрока', difficulty: 'Сложно', completed: false }
+  ],
+  java: [
+    { id: 1, title: 'Hello World на Java', difficulty: 'Легко', completed: false },
+    { id: 2, title: 'Работа с массивами', difficulty: 'Средне', completed: false },
+    { id: 3, title: 'Простой банкомат', difficulty: 'Сложно', completed: false }
+  ],
+  cpp: [
+    { id: 1, title: 'Первая программа на C++', difficulty: 'Легко', completed: false },
+    { id: 2, title: 'Циклы и условия', difficulty: 'Средне', completed: false },
+    { id: 3, title: 'Консольная игра', difficulty: 'Сложно', completed: false }
   ]
 };
 
 const challenges = {
   javascript: {
     1: {
-      task: 'Создайте переменную name со значением "Юра" и выведите её в консоль',
+      task: 'Создайте переменную message со значением "Hello World" и выведите её в консоль',
       starter: '// Напишите ваш код здесь\n',
-      solution: 'const name = "Юра";\nconsole.log(name);'
+      solution: 'const message = "Hello World";\nconsole.log(message);',
+      hint: 'Используй const для создания переменной, затем console.log() для вывода'
+    },
+    2: {
+      task: 'Создайте функцию calculator, которая принимает два числа и возвращает их сумму',
+      starter: '// Создай функцию calculator\nfunction calculator(a, b) {\n  // твой код здесь\n}\n\nconsole.log(calculator(5, 3));',
+      solution: 'function calculator(a, b) {\n  return a + b;\n}\n\nconsole.log(calculator(5, 3));',
+      hint: 'Используй return для возврата результата сложения a + b'
+    },
+    3: {
+      task: 'Создайте игру-кликер: переменная score = 0, функция click() увеличивает score на 1',
+      starter: '// Создай переменную score\nlet score = 0;\n\n// Создай функцию click\nfunction click() {\n  // твой код здесь\n}\n\nclick();\nclick();\nconsole.log(score);',
+      solution: 'let score = 0;\n\nfunction click() {\n  score = score + 1;\n}\n\nclick();\nclick();\nconsole.log(score);',
+      hint: 'Используй score = score + 1 или score++ для увеличения счётчика'
+    },
+    4: {
+      task: 'Создайте генератор случайных чисел от 1 до 100',
+      starter: '// Создай функцию randomNumber\nfunction randomNumber() {\n  // используй Math.random() и Math.floor()\n}\n\nconsole.log(randomNumber());',
+      solution: 'function randomNumber() {\n  return Math.floor(Math.random() * 100) + 1;\n}\n\nconsole.log(randomNumber());',
+      hint: 'Math.random() даёт число от 0 до 1, умножь на 100 и используй Math.floor()'
     }
   },
   python: {
     1: {
-      task: 'Создайте переменную greeting и присвойте ей значение "Привет, мир!"',
-      starter: '# Напишите ваш код здесь\n',
-      solution: 'greeting = "Привет, мир!"\nprint(greeting)'
+      task: 'Запросите имя пользователя и поприветствуйте его',
+      starter: '# Получи имя от пользователя\nname = input("Как тебя зовут? ")\n# Выведи приветствие\n',
+      solution: 'name = input("Как тебя зовут? ")\nprint(f"Привет, {name}!");',
+      hint: 'Используй f-строку: f"Привет, {name}!" для вывода'
+    },
+    2: {
+      task: 'Создайте калькулятор, который складывает два числа',
+      starter: '# Получи два числа\na = int(input("Первое число: "))\nb = int(input("Второе число: "))\n# Посчитай сумму и выведи результат\n',
+      solution: 'a = int(input("Первое число: "))\nb = int(input("Второе число: "))\nresult = a + b\nprint(f"Сумма: {result}");',
+      hint: 'Создай переменную result = a + b и выведи её'
+    },
+    3: {
+      task: 'Создайте игру "Угадай число": программа загадывает число от 1 до 10',
+      starter: 'import random\n\n# Загадай число\nsecret = random.randint(1, 10)\n# Получи попытку от игрока\nguess = int(input("Угадай число от 1 до 10: "))\n# Проверь и выведи результат\n',
+      solution: 'import random\n\nsecret = random.randint(1, 10)\nguess = int(input("Угадай число от 1 до 10: "))\nif guess == secret:\n    print("Угадал!")\nelse:\n    print(f"Не угадал, было {secret}");',
+      hint: 'Используй if guess == secret для проверки'
+    },
+    4: {
+      task: 'Создайте список задач: добавление задачи в массив и вывод всех задач',
+      starter: '# Создай пустой список\ntasks = []\n# Добавь задачу\ntask = input("Введи задачу: ")\n# твой код здесь\n# Выведи все задачи\n',
+      solution: 'tasks = []\ntask = input("Введи задачу: ")\ntasks.append(task)\nfor t in tasks:\n    print(f"- {t}");',
+      hint: 'Используй tasks.append(task) для добавления, цикл for для вывода'
     }
   },
   csharp: {
     1: {
-      task: 'Создайте класс Player с публичным полем playerName',
-      starter: '// Напишите ваш код здесь\n',
-      solution: 'public class Player\n{\n    public string playerName;\n}'
+      task: 'Создайте GameObject с именем "Player" в Unity',
+      starter: '// Создай новый GameObject\nGameObject player = new GameObject();\n// Задай ему имя\n',
+      solution: 'GameObject player = new GameObject();\nplayer.name = "Player";',
+      hint: 'Используй player.name = "Player" чтобы назвать объект'
+    },
+    2: {
+      task: 'Добавьте движение персонажу: при Update() двигай его вправо',
+      starter: 'void Update() {\n    // Двигай transform вправо на 0.1 единицу\n    // Используй transform.Translate\n}',
+      solution: 'void Update() {\n    transform.Translate(0.1f, 0, 0);\n}',
+      hint: 'transform.Translate(x, y, z) двигает объект. Для вправо используй (0.1f, 0, 0)'
+    },
+    3: {
+      task: 'Создайте кликер: переменная score, метод OnClick() увеличивает счёт',
+      starter: 'int score = 0;\n\nvoid OnClick() {\n    // Увеличь score на 1\n    // Выведи в консоль\n}',
+      solution: 'int score = 0;\n\nvoid OnClick() {\n    score++;\n    Debug.Log("Score: " + score);\n}',
+      hint: 'Используй score++ для увеличения и Debug.Log() для вывода'
+    },
+    4: {
+      task: 'Создайте систему здоровья: переменная health = 100, метод TakeDamage(int damage)',
+      starter: 'int health = 100;\n\nvoid TakeDamage(int damage) {\n    // Уменьши health на damage\n    // Проверь, если health <= 0, выведи "Game Over"\n}',
+      solution: 'int health = 100;\n\nvoid TakeDamage(int damage) {\n    health -= damage;\n    if (health <= 0) {\n        Debug.Log("Game Over");\n    }\n}',
+      hint: 'Используй health -= damage для уменьшения, if (health <= 0) для проверки'
+    }
+  },
+  java: {
+    1: {
+      task: 'Создайте программу Hello World на Java',
+      starter: 'public class Main {\n    public static void main(String[] args) {\n        // Выведи "Hello World"\n    }\n}',
+      solution: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}',
+      hint: 'Используй System.out.println() для вывода'
+    },
+    2: {
+      task: 'Создайте массив из 5 чисел и выведите первый элемент',
+      starter: 'int[] numbers = {10, 20, 30, 40, 50};\n// Выведи первый элемент\n',
+      solution: 'int[] numbers = {10, 20, 30, 40, 50};\nSystem.out.println(numbers[0]);',
+      hint: 'Первый элемент массива - numbers[0]'
+    },
+    3: {
+      task: 'Создайте банкомат: баланс 1000, метод withdraw(int amount) снимает деньги',
+      starter: 'int balance = 1000;\n\nvoid withdraw(int amount) {\n    // Проверь, хватает ли денег\n    // Если да - уменьши баланс\n    // Если нет - выведи ошибку\n}',
+      solution: 'int balance = 1000;\n\nvoid withdraw(int amount) {\n    if (amount <= balance) {\n        balance -= amount;\n        System.out.println("Выдано: " + amount);\n    } else {\n        System.out.println("Недостаточно средств");\n    }\n}',
+      hint: 'Сначала проверь if (amount <= balance), потом вычти'
+    }
+  },
+  cpp: {
+    1: {
+      task: 'Создайте первую программу на C++',
+      starter: '#include <iostream>\nusing namespace std;\n\nint main() {\n    // Выведи "Hello C++"\n    return 0;\n}',
+      solution: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello C++" << endl;\n    return 0;\n}',
+      hint: 'Используй cout << "текст" << endl;'
+    },
+    2: {
+      task: 'Создайте цикл, который выводит числа от 1 до 5',
+      starter: '#include <iostream>\nusing namespace std;\n\nint main() {\n    // Создай цикл for от 1 до 5\n    return 0;\n}',
+      solution: '#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        cout << i << endl;\n    }\n    return 0;\n}',
+      hint: 'Используй for (int i = 1; i <= 5; i++)'
+    },
+    3: {
+      task: 'Создайте консольную игру "Орёл или решка"',
+      starter: '#include <iostream>\n#include <cstdlib>\nusing namespace std;\n\nint main() {\n    // Сгенерируй случайное число 0 или 1\n    // Если 0 - "Орёл", если 1 - "Решка"\n    return 0;\n}',
+      solution: '#include <iostream>\n#include <cstdlib>\nusing namespace std;\n\nint main() {\n    int coin = rand() % 2;\n    if (coin == 0) {\n        cout << "Орёл" << endl;\n    } else {\n        cout << "Решка" << endl;\n    }\n    return 0;\n}',
+      hint: 'rand() % 2 даёт 0 или 1, используй if для проверки'
     }
   }
 };
@@ -77,7 +187,9 @@ const handbook = {
       examples: [
         { code: 'const text = "Привет";', desc: 'Строка' },
         { code: 'const num = 42;', desc: 'Число' },
-        { code: 'const isActive = true;', desc: 'Булево значение' }
+        { code: 'const isActive = true;', desc: 'Булево значение' },
+        { code: 'const user = {name: "Юра", age: 25};', desc: 'Объект' },
+        { code: 'const colors = ["red", "green", "blue"];', desc: 'Массив' }
       ]
     },
     {
@@ -85,7 +197,33 @@ const handbook = {
       content: 'Функции - это блоки кода, которые можно вызывать многократно. Создавай их с помощью function или стрелочных функций =>.',
       examples: [
         { code: 'function greet() { console.log("Привет!"); }', desc: 'Обычная функция' },
-        { code: 'const sum = (a, b) => a + b;', desc: 'Стрелочная функция' }
+        { code: 'const sum = (a, b) => a + b;', desc: 'Стрелочная функция' },
+        { code: 'function multiply(x, y) { return x * y; }', desc: 'Функция с возвратом' }
+      ]
+    },
+    {
+      title: 'Условия',
+      content: 'Используй if/else для проверки условий. Тернарный оператор ? : для коротких проверок.',
+      examples: [
+        { code: 'if (age > 18) { console.log("Взрослый"); }', desc: 'Простое условие' },
+        { code: 'const status = age > 18 ? "Взрослый" : "Ребёнок";', desc: 'Тернарный оператор' }
+      ]
+    },
+    {
+      title: 'Циклы',
+      content: 'Циклы позволяют повторять код. Используй for для счётчика, while для условия.',
+      examples: [
+        { code: 'for (let i = 0; i < 5; i++) { console.log(i); }', desc: 'Цикл for' },
+        { code: 'colors.forEach(c => console.log(c));', desc: 'Перебор массива' }
+      ]
+    },
+    {
+      title: 'Создание игры-кликера',
+      content: 'Кликер - это игра где клик увеличивает счёт. Нужна переменная для счёта и функция для клика.',
+      examples: [
+        { code: 'let score = 0;\nfunction click() { score++; }', desc: 'Базовая логика' },
+        { code: 'let scorePerClick = 1;\nscore += scorePerClick;', desc: 'Улучшения' },
+        { code: 'setInterval(() => { score += autoClicks; }, 1000);', desc: 'Автоклики' }
       ]
     }
   ],
@@ -141,6 +279,15 @@ const handbook = {
         { code: 'void Start() {\n    Debug.Log("Игра началась!");\n}', desc: 'Метод при старте' },
         { code: 'void Update() {\n    transform.Rotate(0, 0, 1);\n}', desc: 'Каждый кадр' }
       ]
+    },
+    {
+      title: 'Гайд: Игра-кликер в Unity',
+      content: 'Для создания кликера: 1) Создай переменную score 2) Добавь метод OnClick() 3) Привяжи к Button 4) Отображай через UI Text',
+      examples: [
+        { code: 'int score = 0;\nvoid OnClick() {\n    score++;\n}', desc: 'Базовая логика' },
+        { code: 'public Text scoreText;\nscoreText.text = score.ToString();', desc: 'Отображение UI' },
+        { code: 'int scorePerClick = 1;\nscore += scorePerClick;', desc: 'Улучшения' }
+      ]
     }
   ]
 };
@@ -155,6 +302,7 @@ export default function Index() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userProgress, setUserProgress] = useState(0);
+  const [showHint, setShowHint] = useState(false);
 
   const handleLanguageSelect = (langId: string) => {
     setSelectedLanguage(langId);
@@ -459,6 +607,14 @@ export default function Index() {
                 </Badge>
               </div>
               <div className="flex gap-3">
+                <Button 
+                  onClick={() => setShowHint(!showHint)} 
+                  variant="outline" 
+                  className="border-warning/50 hover:bg-warning/10"
+                >
+                  <Icon name="Lightbulb" className="mr-2" size={18} />
+                  Подсказка
+                </Button>
                 <Button onClick={checkCode} className="gradient-accent hover:opacity-90 glow">
                   <Icon name="Play" className="mr-2" size={18} />
                   Проверить код
@@ -471,9 +627,23 @@ export default function Index() {
                 <Icon name="Target" className="text-primary" size={24} />
                 Задание
               </h3>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-muted-foreground mb-4">
                 {challenges[selectedLanguage as keyof typeof challenges]?.[selectedCourse!]?.task}
               </p>
+              
+              {showHint && (
+                <div className="mt-4 p-4 bg-warning/10 border border-warning/30 rounded-lg animate-scale-in">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Lightbulb" className="text-warning mt-1" size={20} />
+                    <div>
+                      <p className="font-semibold text-warning mb-1">Подсказка:</p>
+                      <p className="text-sm text-foreground/80">
+                        {challenges[selectedLanguage as keyof typeof challenges]?.[selectedCourse!]?.hint}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </Card>
 
             <Card className="p-6 glass border-white/10">
