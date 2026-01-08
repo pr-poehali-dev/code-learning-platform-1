@@ -60,8 +60,93 @@ const challenges = {
   }
 };
 
+const handbook = {
+  javascript: [
+    {
+      title: 'Переменные',
+      content: 'В JavaScript есть три способа объявления переменных: var, let и const. Используй const для неизменяемых значений, let для изменяемых.',
+      examples: [
+        { code: 'const name = "Юра";', desc: 'Константа - нельзя изменить' },
+        { code: 'let age = 25;', desc: 'Переменная - можно изменить' },
+        { code: 'var oldWay = "устаревший способ";', desc: 'Старый способ - не используй' }
+      ]
+    },
+    {
+      title: 'Типы данных',
+      content: 'JavaScript поддерживает различные типы данных: строки (string), числа (number), булевы значения (boolean), объекты (object), массивы (array).',
+      examples: [
+        { code: 'const text = "Привет";', desc: 'Строка' },
+        { code: 'const num = 42;', desc: 'Число' },
+        { code: 'const isActive = true;', desc: 'Булево значение' }
+      ]
+    },
+    {
+      title: 'Функции',
+      content: 'Функции - это блоки кода, которые можно вызывать многократно. Создавай их с помощью function или стрелочных функций =>.',
+      examples: [
+        { code: 'function greet() { console.log("Привет!"); }', desc: 'Обычная функция' },
+        { code: 'const sum = (a, b) => a + b;', desc: 'Стрелочная функция' }
+      ]
+    }
+  ],
+  python: [
+    {
+      title: 'Переменные',
+      content: 'В Python переменные создаются просто через присваивание. Не нужно указывать тип - Python определит его автоматически.',
+      examples: [
+        { code: 'name = "Юра"', desc: 'Строковая переменная' },
+        { code: 'age = 25', desc: 'Числовая переменная' },
+        { code: 'is_student = True', desc: 'Булева переменная' }
+      ]
+    },
+    {
+      title: 'Типы данных',
+      content: 'Python имеет встроенные типы: str (строки), int (целые числа), float (дробные), bool (булевы), list (списки), dict (словари).',
+      examples: [
+        { code: 'numbers = [1, 2, 3]', desc: 'Список' },
+        { code: 'person = {"name": "Юра"}', desc: 'Словарь' }
+      ]
+    },
+    {
+      title: 'Функции',
+      content: 'Функции в Python создаются с помощью ключевого слова def. Обрати внимание на отступы - они обязательны!',
+      examples: [
+        { code: 'def greet():\n    print("Привет!")', desc: 'Простая функция' },
+        { code: 'def add(a, b):\n    return a + b', desc: 'Функция с параметрами' }
+      ]
+    }
+  ],
+  csharp: [
+    {
+      title: 'GameObject и Component',
+      content: 'В Unity всё построено на GameObject - это базовый объект сцены. К нему прикрепляются компоненты (Components), которые добавляют функциональность.',
+      examples: [
+        { code: 'GameObject player = new GameObject("Player");', desc: 'Создание объекта' },
+        { code: 'player.AddComponent<Rigidbody2D>();', desc: 'Добавление физики' }
+      ]
+    },
+    {
+      title: 'Переменные и типы',
+      content: 'C# - строго типизированный язык. Нужно указывать тип переменной: int (целые), float (дробные), string (строки), bool (булевы).',
+      examples: [
+        { code: 'int health = 100;', desc: 'Целое число' },
+        { code: 'float speed = 5.5f;', desc: 'Дробное число' },
+        { code: 'string playerName = "Герой";', desc: 'Строка' }
+      ]
+    },
+    {
+      title: 'Методы (функции)',
+      content: 'В Unity используются специальные методы: Start() вызывается при создании объекта, Update() - каждый кадр.',
+      examples: [
+        { code: 'void Start() {\n    Debug.Log("Игра началась!");\n}', desc: 'Метод при старте' },
+        { code: 'void Update() {\n    transform.Rotate(0, 0, 1);\n}', desc: 'Каждый кадр' }
+      ]
+    }
+  ]
+};
+
 export default function Index() {
-  const [currentView, setCurrentView] = useState<'home' | 'languages' | 'editor' | 'courses' | 'auth'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'languages' | 'editor' | 'courses' | 'auth' | 'handbook'>('home');
   const [selectedLanguage, setSelectedLanguage] = useState<string>('javascript');
   const [selectedCourse, setSelectedCourse] = useState<number | null>(null);
   const [code, setCode] = useState<string>('');
@@ -268,6 +353,27 @@ export default function Index() {
               </h2>
             </div>
 
+            <Card 
+              onClick={() => setCurrentView('handbook')}
+              className="p-6 glass border-primary/30 hover:bg-white/10 cursor-pointer transition-all hover:scale-[1.02] group mb-6"
+            >
+              <div className="flex items-center gap-6">
+                <div className="w-20 h-20 rounded-2xl gradient-accent flex items-center justify-center text-4xl group-hover:animate-pulse-glow">
+                  📚
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                    Справочник по {languages.find(l => l.id === selectedLanguage)?.name}
+                    <Badge className="gradient-primary">Теория</Badge>
+                  </h3>
+                  <p className="text-muted-foreground text-lg">
+                    Изучи основы: переменные, типы данных, функции и многое другое
+                  </p>
+                </div>
+                <Icon name="ChevronRight" className="text-primary" size={32} />
+              </div>
+            </Card>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {(courses[selectedLanguage as keyof typeof courses] || []).map((course) => (
                 <Card
@@ -286,6 +392,54 @@ export default function Index() {
                     Открыть урок
                     <Icon name="Play" className="ml-2" size={18} />
                   </Button>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {currentView === 'handbook' && (
+          <div className="space-y-8 animate-fade-in">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" onClick={() => setCurrentView('courses')}>
+                <Icon name="ArrowLeft" className="mr-2" size={18} />
+                К курсам
+              </Button>
+              <h2 className="text-4xl font-bold text-gradient flex items-center gap-3">
+                📚 Справочник: {languages.find(l => l.id === selectedLanguage)?.name}
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              {(handbook[selectedLanguage as keyof typeof handbook] || []).map((section, idx) => (
+                <Card key={idx} className="p-8 glass border-white/10 hover:border-primary/30 transition-all">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center text-2xl font-bold">
+                      {idx + 1}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-3xl font-bold mb-3">{section.title}</h3>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{section.content}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 mt-6 pt-6 border-t border-white/10">
+                    <h4 className="text-xl font-bold flex items-center gap-2">
+                      <Icon name="Code" className="text-accent" size={20} />
+                      Примеры кода
+                    </h4>
+                    {section.examples.map((example, exIdx) => (
+                      <div key={exIdx} className="bg-black/30 rounded-lg p-4 border border-white/5">
+                        <code className="text-accent text-base font-mono block mb-2 whitespace-pre-wrap">
+                          {example.code}
+                        </code>
+                        <p className="text-sm text-muted-foreground flex items-center gap-2">
+                          <Icon name="Info" size={14} />
+                          {example.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </Card>
               ))}
             </div>
